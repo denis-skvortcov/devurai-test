@@ -1,0 +1,22 @@
+<div class="app">
+  <!--<button type="button" mat-button (click)="getTestApi()">Test</button>-->
+  <!--<p>{{result}}</p>-->
+  <mat-form-field class="mat-form-last">
+    <input matInput
+           type="search"
+           [formControl]="searchCity"
+           [matAutocomplete]="city"
+           placeholder="Город, в котором вы родились"
+           required>
+    <mat-autocomplete #city="matAutocomplete" [displayWith]="displayFn">
+    <!--<mat-autocomplete #city="matAutocomplete">-->
+      <mat-option *ngFor="let c of cities" [value]="c">
+        {{c.name}}
+      </mat-option>
+    </mat-autocomplete>
+    <mat-error *ngIf="searchCity.invalid">
+      Город должен быть выбран из предложеного списка
+    </mat-error>
+  </mat-form-field>
+</div>
+
